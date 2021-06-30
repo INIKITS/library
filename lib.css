@@ -1,0 +1,86 @@
+html{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: rgba(157, 236, 230, 0.952);
+    background: linear-gradient(180deg, rgba(59, 229, 241, 0.678) 39%, rgb(94, 223, 169) 100%);
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+header{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 60px;
+}
+#container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 300px;
+}
+#card{
+    width: 280px;
+    height: 350px;
+    margin: 50px;
+    background-color: rgb(96, 122, 122);
+    align-content: flex-start;
+    justify-content: flex-start;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
+}
+footer{
+    position:fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+#cardtext{
+    flex: 0 1 calc(25% - 1em);
+}
+
+@media screen and (min-width: 40em) {
+    .card{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .cardtext{
+        flex: 0 1 calc(25% - 1em);
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .cards {
+   }
+     
+    .cardtext {
+        flex: 0 1 calc(25% - 1em);
+     }
+}
+ 
+ 
+@media screen and (min-width: 40em) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .cardtext{
+        flex: 0 1 calc(50% - 1em);
+    }
+
+}
