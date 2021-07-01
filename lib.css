@@ -12,17 +12,28 @@ body{
     padding: 0;
     margin: 0;
 }
+
 header{
+    /* background: rgba(170, 99, 99, 0.795); */
     margin: 0;
     padding: 0;
     text-align: center;
     font-size: 60px;
+}
+#bookHeader{
+    position: absolute;
+    width: 96%;
+    height: 1em;
+    top: 4em;
+    left: 2em;
 }
 #container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     height: 300px;
+    position: relative;
+    top:6em;
 }
 #card{
     width: 280px;
@@ -51,29 +62,29 @@ footer{
 }
 
 @media screen and (min-width: 40em) {
-    .card{
+    #card{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
 
-    .cardtext{
+    #cardtext{
         flex: 0 1 calc(25% - 1em);
     }
 }
 
 @media screen and (min-width: 60em) {
-    .cards {
+    #cards {
    }
      
-    .cardtext {
+    #cardtext {
         flex: 0 1 calc(25% - 1em);
      }
 }
  
  
 @media screen and (min-width: 40em) {
-    .cards {
+    #cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -83,4 +94,21 @@ footer{
         flex: 0 1 calc(50% - 1em);
     }
 
+}
+
+
+#bookinfo{
+    background: rgb(163, 131, 131);
+    border: solid 3px rgba(0, 0, 0, 0.849);
+    box-shadow:;
+    top:15em;
+    left:43em;
+    position: absolute;
+    width: 25em;
+    height: 25em;
+    display: none;
+}
+
+input[type=text] {
+    padding: 4px;
 }
