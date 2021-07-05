@@ -1,6 +1,6 @@
-const newBookCard = document.createElement('div');
-const cardText = document.createElement('p');
-var container = document.getElementById('container')
+// const newBookCard = document.createElement('div');
+// const cardText = document.createElement('p');
+const container = document.getElementById('container')
 
 // for (i=0; i<2; i++){
 //     newBookCard;
@@ -41,16 +41,20 @@ function addNewCard(lib){
     console.log(typeof(lib));
     Object.values(lib).forEach(key => {
         console.log(key, lib[key]);
+        const newBookCard = document.createElement('div');
+        const cardText = document.createElement('p');
+
         newBookCard.innerHTML = key.title;
         cardText.innerHTML = key.info();
+        cardText.id = 'cardtext';
+        newBookCard.className = 'WHEEEWWWWW';
+        newBookCard.id = 'card';
+        newBookCard.appendChild(cardText);
+        container.appendChild(newBookCard);
     })
-    cardText.id = 'cardtext';
-    newBookCard.className = 'WHEEEWWWWW';
-    newBookCard.id = 'card';
-    newBookCard.appendChild(cardText);
-    container.appendChild(newBookCard);
 
 }
+
 
 bookForm.onsubmit = function(e){
     e.preventDefault();
