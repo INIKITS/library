@@ -74,7 +74,7 @@ footer{
 }
 
 @media screen and (min-width: 60em) {
-    #cards {
+    #card {
    }
      
     #cardtext {
@@ -84,7 +84,7 @@ footer{
  
  
 @media screen and (min-width: 40em) {
-    #cards {
+    #card {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -107,7 +107,7 @@ footer{
     border: solid 3px rgba(0, 0, 0, 0.849);
     box-shadow:;
     top:250px;
-    left:750px;
+    left:750px ;
     position: absolute;
     width: 400px;
     height: 400px;
