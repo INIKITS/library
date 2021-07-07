@@ -35,15 +35,27 @@ function addBookToLibrary(){
         newBook = new Book(title, author, pages);
         myLibrary.push(newBook);
 
-}
-
+    }
+var counter = 0;
 function addNewCard(lib){
     console.log(typeof(lib));
     Object.values(lib).forEach(key => {
         console.log(key, lib[key]);
+        
         const newBookCard = document.createElement('div');
+        newBookCard.setAttribute('data-cardNum', counter);
+        var cardDataNum = newBookCard.getAttribute('data-cardNum');
+        var cardValue = document.querySelectorAll('card').value;
+        var cardList = document.querySelectorAll('data-cardNum');
+        console.log(cardList);
+        for (i=0; i<lib.length; i++){
+            if (lib[i].name == key){
+                console.log('copy');
+                break;
+            }
+        console.log(newBookCard.getAttribute('data-cardNum'));
         const cardText = document.createElement('p');
-
+        
         newBookCard.innerHTML = key.title;
         cardText.innerHTML = key.info();
         cardText.id = 'cardtext';
@@ -51,9 +63,15 @@ function addNewCard(lib){
         newBookCard.id = 'card';
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
-    })
+        counter++;
+        }
 
+    })
 }
+
+// function deleteCard(){
+//     if 
+// }
 
 
 bookForm.onsubmit = function(e){
