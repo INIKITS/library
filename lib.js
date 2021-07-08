@@ -36,24 +36,35 @@ function addBookToLibrary(){
         myLibrary.push(newBook);
 
     }
-var counter = 0;
+
+function checkForDup(libIndex){
+    console.log(libIndex);
+    console.log('checkDup');
+    var cardList = document.querySelectorAll('card');
+
+    console.log(cardList);
+    // for (i=0, len = cardList.length; i<len; i++){
+    //     console.log(cardList[i]);
+    //     if (cardlist[i] == libIndex){
+    //         console.log('sames')
+    //     }
+    //     console.log('notSames');
+    // }
+}
 function addNewCard(lib){
     console.log(typeof(lib));
-    Object.values(lib).forEach(key => {
-        console.log(key, lib[key]);
+    var counter = 0;
+    Object.values(lib).forEach((key, index) => {
+        console.log(index);
         
         const newBookCard = document.createElement('div');
-        newBookCard.setAttribute('data-cardNum', counter);
+        newBookCard.setAttribute('data-cardNum', index);
         var cardDataNum = newBookCard.getAttribute('data-cardNum');
-        var cardValue = document.querySelectorAll('card').value;
-        var cardList = document.querySelectorAll('data-cardNum');
-        console.log(cardList);
-        for (i=0; i<lib.length; i++){
-            if (lib[i].name == key){
-                console.log('copy');
-                break;
-            }
-        console.log(newBookCard.getAttribute('data-cardNum'));
+        checkForDup(index);
+        // var cardValue = document.querySelectorAll('card').value;
+        // var cardList = document.querySelectorAll('data-cardNum');
+        // console.log(cardList.entries());
+        console.log(cardDataNum);
         const cardText = document.createElement('p');
         
         newBookCard.innerHTML = key.title;
@@ -64,14 +75,11 @@ function addNewCard(lib){
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
         counter++;
-        }
+        })
 
-    })
-}
+    }
 
-// function deleteCard(){
-//     if 
-// }
+
 
 
 bookForm.onsubmit = function(e){
