@@ -1,39 +1,61 @@
-e html{
+html{
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
 }
 body{
-    background: rgba(157, 236, 230, 0.952);
-    background: linear-gradient(180deg, rgba(59, 229, 241, 0.678) 39%, rgb(94, 223, 169) 100%);
+    background: rgb(173 186 199);
+    /* background: linear-gradient(180deg, rgba(59, 229, 241, 0.678) 39%, rgb(94, 223, 169) 100%); */
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
 }
 
-header{
+#banner{
     /* background: rgba(170, 99, 99, 0.795); */
+    display: flex;
     margin: 0;
     padding: 0;
-    text-align: center;
     font-size: 60px;
 }
-#bookHeader{
+#bannerTitle{
+    color: rgba(41, 38, 38, 0.74);
+
+}
+#line{
+    background:linear-gradient(to right,rgb(0, 0, 0), rgba(0,0,0,0));
     position: absolute;
-    width: 96%;
+    top: 85px;
+    width: 100%;
+    height: 2px;
+}
+#line2{
+    background:linear-gradient(to right,rgb(0, 0, 0), rgba(0,0,0,0));
+    position: absolute;
+    top: 95px;
+    width: 100%;
+    height: 2px;
+}
+#bookHeader{
+    color: rgb(205 217 229);
+    position: absolute;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.774), rgba(0,0,0,0));
+    width: 100%;
     height: 1em;
-    top: 4em;
-    left: 2em;
+    top: 4.5em;
+    /* left: 1em; */
 }
 #container{
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.774), rgba(0,0,0,0));
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 300px;
+    align-content: space-around;
+    height: 400px;
     position: relative;
-    top:6em;
+    top:8em;
 }
 #card{
     width: 280px;
@@ -42,7 +64,7 @@ header{
     background-color: rgb(96, 122, 122);
     align-content: flex-start;
     justify-content: flex-start;
-
+    border-radius: 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -50,12 +72,21 @@ header{
     align-content: center;
 }
 footer{
+    color: rgb(205 217 229);
+    background: rgb(45 51 59);
     position:fixed;
     left: 0px;
     bottom: 0px;
     height: 30px;
     width: 100%;
     text-align: center;
+}
+a{
+    text-decoration: none;
+    color: rgb(205 217 229);
+}
+a:hover{
+    text-decoration: underline;
 }
 #cardtext{
     flex: 0 1 calc(25% - 1em);
@@ -65,7 +96,7 @@ footer{
     #card{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
     #cardtext{
@@ -74,7 +105,7 @@ footer{
 }
 
 @media screen and (min-width: 60em) {
-    #card {
+    #card {justify-content: flex-end;
    }
      
     #cardtext {
@@ -87,7 +118,7 @@ footer{
     #card {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
     #cardtext{
@@ -97,7 +128,7 @@ footer{
 }
 
 
-#bookinfo{
+#bookForm{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -111,7 +142,7 @@ footer{
     position: absolute;
     width: 400px;
     height: 400px;
-    /* display: none; */
+    display: none;
 }
 
 #submit{
@@ -120,6 +151,14 @@ footer{
     width: 5vw;
     height: 1.5vw;
     margin: 4%
+}
+#formButton{
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 20px;
+    width: 25px;
+    border: none;
+    position: relative;
 }
 #cancel{
     position: relative;

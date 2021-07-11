@@ -1,19 +1,10 @@
-// const newBookCard = document.createElement('div');
-// const cardText = document.createElement('p');
 const container = document.getElementById('container')
-
-// for (i=0; i<2; i++){
-//     newBookCard;
-//     cardText;
-//     newBookCard.innerHTML = 'womp';
-//     cardText.innerHTML = 'wompwomp';
-//     document.container.appendChild(newBookCard)
-//     document.container.appendChild(cardText);
-// }
-const bookForm = document.getElementById('bookinfo');
+const bookForm = document.getElementById('bookForm');
 const bookDetails = bookForm.elements;
 const myLibrary = []
-var submitButton = document.getElementById('submit');
+const submitButton = document.getElementById('submit');
+const formButton = document.getElementById('formButton');
+const cancelForm = document.getElementById('cancel');
 
 function Book(title, author, pages){
     this.title = title;
@@ -34,7 +25,6 @@ function addBookToLibrary(){
         
     newBook = new Book(title, author, pages);
      myLibrary.push(newBook);
-
 }
 
 function checkForDup(libIndex){
@@ -86,22 +76,26 @@ bookForm.onsubmit = function(e){
     addNewCard(myLibrary);
 }
 
+cancelForm.addEventListener('click', toggleForm);
+
 function deleteCard(index) {
     container.removeChild(index);
 }
 
+var formVisible = true;
 
+function toggleForm(){
+    formVisible = formVisible ? false : true; 
+    if (formVisible){
+        bookForm.style.display = 'none';
+    }
+    else{
+        bookForm.style.display = 'flex';
+    }
+}
 
-
-
-
-
-
-
-// const bookDetails = bookForm.elements;
-// bookDetails.forEach(function (info, index){
-//     console.log(index);
-//     console.log(info);
-// })
-// console.log(bookDetails);
+formButton.addEventListener("click", function() {
+    console.log('click!');
+    toggleForm();
+})
 
