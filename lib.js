@@ -27,66 +27,69 @@ function Book(title, author, pages){
 
 
 function addBookToLibrary(){
-        console.log('addBook');
-        var title = document.getElementById('title').value;
-        var author = document.getElementById('author').value;
-        var pages = document.getElementById('pages').value;
+    console.log('addBook');
+    var title = document.getElementById('title').value;
+    var author = document.getElementById('author').value;
+    var pages = document.getElementById('pages').value;
         
-        newBook = new Book(title, author, pages);
-        myLibrary.push(newBook);
+    newBook = new Book(title, author, pages);
+     myLibrary.push(newBook);
 
-    }
+}
 
 function checkForDup(libIndex){
-    console.log(libIndex);
     console.log('checkDup');
-    var cardList = document.querySelectorAll('card');
 
+    // get children of container to see whats on screen // 
+    var cardList = container.querySelectorAll('.cardDisplay[data-cardnum]');
+    var len = cardList.length
     console.log(cardList);
-    // for (i=0, len = cardList.length; i<len; i++){
-    //     console.log(cardList[i]);
-    //     if (cardlist[i] == libIndex){
-    //         console.log('sames')
-    //     }
-    //     console.log('notSames');
-    // }
+
+    // loop through container and check for duplicate ID's in array/container //
+    for (i=0; i<len; i++){
+        var cardData = cardList[i].getAttribute('data-cardNum');
+        cardData = Number(cardData);
+        console.log(cardList[i]);
+        if (cardData === libIndex){
+            console.log('sames')
+            deleteCard(cardList[i]);
+        }
+        else{
+        console.log('notSames');
+        }
+    }
 }
+
 function addNewCard(lib){
     console.log(typeof(lib));
-    var counter = 0;
     Object.values(lib).forEach((key, index) => {
-        console.log(index);
-        
         const newBookCard = document.createElement('div');
         newBookCard.setAttribute('data-cardNum', index);
-        var cardDataNum = newBookCard.getAttribute('data-cardNum');
         checkForDup(index);
-        // var cardValue = document.querySelectorAll('card').value;
-        // var cardList = document.querySelectorAll('data-cardNum');
-        // console.log(cardList.entries());
-        console.log(cardDataNum);
+
+        // create card info and append to container //
         const cardText = document.createElement('p');
-        
         newBookCard.innerHTML = key.title;
         cardText.innerHTML = key.info();
         cardText.id = 'cardtext';
-        newBookCard.className = 'WHEEEWWWWW';
+        newBookCard.className = 'cardDisplay';
         newBookCard.id = 'card';
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
-        counter++;
         })
 
     }
-
-
-
 
 bookForm.onsubmit = function(e){
     e.preventDefault();
     addBookToLibrary();
     addNewCard(myLibrary);
 }
+
+function deleteCard(index) {
+    container.removeChild(index);
+}
+
 
 
 
