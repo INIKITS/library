@@ -54,22 +54,27 @@ function addNewCard(lib){
     console.log(typeof(lib));
     Object.values(lib).forEach((key, index) => {
         const newBookCard = document.createElement('div');
+        
         newBookCard.setAttribute('data-cardNum', index);
         checkForDup(index);
-
+        
         // create card info and append to container //
-        const cardText = document.createElement('p');
         const deleteButton = document.createElement('BUTTON')
+        const cardTitle = document.createElement('p');
+        const cardText = document.createElement('p');
+
         deleteButton.id='deleteButton';
         deleteButton.innerHTML = 'X';
-        newBookCard.innerHTML = key.title;
+        cardTitle.innerHTML = key.title;
         cardText.innerHTML = key.info();
         cardText.id = 'cardtext';
         newBookCard.className = 'cardDisplay';
         newBookCard.id = 'card';
+
+        newBookCard.appendChild(deleteButton);
+        newBookCard.appendChild(cardTitle);
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
-        newBookCard.appendChild(deleteButton);
 
         })
 
