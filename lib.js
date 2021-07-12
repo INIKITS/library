@@ -5,6 +5,7 @@ const myLibrary = []
 const submitButton = document.getElementById('submit');
 const formButton = document.getElementById('formButton');
 const cancelForm = document.getElementById('cancel');
+const formContainer = document.getElementById('formContainer');
 
 function Book(title, author, pages){
     this.title = title;
@@ -29,7 +30,6 @@ function addBookToLibrary(){
 
 function checkForDup(libIndex){
     console.log('checkDup');
-
     // get children of container to see whats on screen // 
     var cardList = container.querySelectorAll('.cardDisplay[data-cardnum]');
     var len = cardList.length
@@ -59,6 +59,9 @@ function addNewCard(lib){
 
         // create card info and append to container //
         const cardText = document.createElement('p');
+        const deleteButton = document.createElement('BUTTON')
+        deleteButton.id='deleteButton';
+        deleteButton.innerHTML = 'X';
         newBookCard.innerHTML = key.title;
         cardText.innerHTML = key.info();
         cardText.id = 'cardtext';
@@ -66,12 +69,15 @@ function addNewCard(lib){
         newBookCard.id = 'card';
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
+        newBookCard.appendChild(deleteButton);
+
         })
 
     }
 
 bookForm.onsubmit = function(e){
     e.preventDefault();
+    toggleForm();
     addBookToLibrary();
     addNewCard(myLibrary);
 }
@@ -88,9 +94,12 @@ function toggleForm(){
     formVisible = formVisible ? false : true; 
     if (formVisible){
         bookForm.style.display = 'none';
+        formContainer.style.display = 'none';
+
     }
     else{
         bookForm.style.display = 'flex';
+        formContainer.style.display = 'flex';
     }
 }
 
