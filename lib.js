@@ -13,7 +13,7 @@ function Book(title, author, pages){
     this.pages = pages;
     this.read = false;
     this.info = function(){
-        return(title + ' by ' + author + ', ' + pages + ' pages. ')
+        return(author + ', ' + pages + ' pages. ')
     }
 }
 
@@ -67,7 +67,8 @@ function addNewCard(lib){
         deleteButton.innerHTML = 'X';
         cardTitle.innerHTML = key.title;
         cardText.innerHTML = key.info();
-        cardText.id = 'cardtext';
+        cardTitle.id = 'cardTitle';
+        cardText.id = 'cardText';
         newBookCard.className = 'cardDisplay';
         newBookCard.id = 'card';
 

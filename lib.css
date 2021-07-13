@@ -67,11 +67,9 @@ body{
     background-color: rgb(96, 122, 122);
     align-content: flex-start;
     border-radius: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: column;
-    align-content: center;
+    display: grid;
+    grid-template-rows: 200px 200px 200px;
+    grid-template-columns: 200px 200px;
 }
 footer{
     color: rgb(205 217 229);
@@ -90,32 +88,39 @@ a{
 a:hover{
     text-decoration: underline;
 }
-#cardtext{
-    flex: 0 1 calc(25% - 1em);
-}
 
-@media screen and (min-width: 60em) {
+/* @media screen and (min-width: 60em) {
     #card {justify-content: flex-end;
    }
      
-    #cardtext {
-        flex: 0 1 calc(25% - 1em);
-     }
-}
+
+} */
  
  
 @media screen and (min-width: 40em) {
     #card {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        display: grid;
+        grid-template-rows: 63px 62px 105px 116px;
+        grid-template-columns: 50px 195px 36px;
+        grid-template-areas: 
+        ". . deleteButton deleteButton"
+        ". cardTitle cardTitle ."
+        ". cardText cardText .";
     }
 
-    #cardtext{
-        flex: 0 1 calc(50% - 1em);
     }
+
+#cardText{
+    grid-area: cardText;
+    color: rgba(216, 212, 212, 0.74);
 
 }
+#cardTitle{
+    grid-area: cardTitle;
+    color: rgba(216, 212, 212, 0.74);
+
+ }
+
 
 
 #bookForm{
@@ -155,10 +160,11 @@ a:hover{
     display:none;
 }
 #deleteButton{
-    position: relative;
+    grid-area: deleteButton;
+    /* position: relative; */
     width: 25px;
-    left: 14em;
-    top: 1.5em;
+    /* left: 14em;
+    top: 1.5em; */
     background: transparent;
     border-style: none;
 }
