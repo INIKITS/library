@@ -7,6 +7,8 @@ const formButton = document.getElementById('formButton');
 const cancelForm = document.getElementById('cancel');
 const formContainer = document.getElementById('formContainer');
 
+
+
 function Book(title, author, pages){
     this.title = title;
     this.author = author;
@@ -38,14 +40,16 @@ function checkForDup(libIndex){
     // loop through container and check for duplicate ID's in array/container //
     for (i=0; i<len; i++){
         var cardData = cardList[i].getAttribute('data-cardNum');
-        cardData = Number(cardData);
         console.log(cardList[i]);
+        cardData = Number(cardData);
+
+
         if (cardData === libIndex){
             console.log('sames')
             deleteCard(cardList[i]);
         }
         else{
-        console.log('notSames');
+        console.log('not same ID');
         }
     }
 }
@@ -77,6 +81,7 @@ function addNewCard(lib){
         newBookCard.appendChild(cardText);
         container.appendChild(newBookCard);
 
+
         })
 
     }
@@ -89,10 +94,25 @@ bookForm.onsubmit = function(e){
 }
 
 cancelForm.addEventListener('click', toggleForm);
+ 
+container.addEventListener('click', function(e){
+    if(e.target && e.target.nodeName == "BUTTON"){
+        debugger;
+        console.log(e.target);
+        console.log(e.target.parentNode.getAttribute('data-cardNum'));
+        e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+        var cardToDelete = e.target.parentNode.getAttribute('data-cardNum');
+
+        myLibrary.splice(cardToDelete, 1);
+    }
+})
 
 function deleteCard(index) {
+    console.log(typeof(index), index);
     container.removeChild(index);
 }
+
+
 
 var formVisible = true;
 
