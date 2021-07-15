@@ -25,6 +25,7 @@ function addBookToLibrary(){
     var title = document.getElementById('title').value;
     var author = document.getElementById('author').value;
     var pages = document.getElementById('pages').value;
+    // var readStatus = document.getElementById('readButton').value;
         
     newBook = new Book(title, author, pages);
      myLibrary.push(newBook);
@@ -64,9 +65,16 @@ function addNewCard(lib){
         
         // create card info and append to container //
         const deleteButton = document.createElement('BUTTON')
+        const readButton = document.createElement('INPUT');
+        const readButtonText = document.createElement('p');
         const cardTitle = document.createElement('p');
         const cardText = document.createElement('p');
 
+        readButtonText.id = 'readButtonText';
+        readButtonText.innerHTML = 'Read or not read!';
+        readButton.setAttribute('type', 'checkbox');
+        readButton.id = 'readButton';
+        readButton.innerHTML = this.read;
         deleteButton.id='deleteButton';
         deleteButton.innerHTML = 'X';
         cardTitle.innerHTML = key.title;
@@ -79,6 +87,8 @@ function addNewCard(lib){
         newBookCard.appendChild(deleteButton);
         newBookCard.appendChild(cardTitle);
         newBookCard.appendChild(cardText);
+        newBookCard.appendChild(readButton);
+        newBookCard.appendChild(readButtonText);
         container.appendChild(newBookCard);
 
 
@@ -97,9 +107,6 @@ cancelForm.addEventListener('click', toggleForm);
  
 container.addEventListener('click', function(e){
     if(e.target && e.target.nodeName == "BUTTON"){
-        debugger;
-        console.log(e.target);
-        console.log(e.target.parentNode.getAttribute('data-cardNum'));
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
         var cardToDelete = e.target.parentNode.getAttribute('data-cardNum');
 

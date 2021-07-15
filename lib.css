@@ -64,8 +64,8 @@ body{
     width: 280px;
     height: 350px;
     margin: 50px;
-    background-color: rgb(96, 122, 122);
-    align-content: flex-start;
+    background: rgb(92,145,142);
+    background: linear-gradient(168deg, rgba(79, 102, 101, 0.883) 10%, rgba(181, 232, 241, 0.639) 89%);
     border-radius: 10%;
     display: grid;
     grid-template-rows: 200px 200px 200px;
@@ -100,12 +100,13 @@ a:hover{
 @media screen and (min-width: 40em) {
     #card {
         display: grid;
-        grid-template-rows: 63px 62px 105px 116px;
-        grid-template-columns: 50px 195px 36px;
-        grid-template-areas: 
-        ". . deleteButton deleteButton"
-        ". cardTitle cardTitle ."
-        ". cardText cardText .";
+        grid-template-rows: 63px 62px 167px 49px;
+        grid-template-columns: 41px 195px 29px;
+        grid-template-areas:
+            ". . deleteButton deleteButton"
+            ". cardTitle cardTitle ."
+            ". cardText cardText ."
+            ". readButton . .";
     }
 
     }
@@ -160,7 +161,9 @@ a:hover{
     display:none;
 }
 #deleteButton{
+    cursor: pointer;
     grid-area: deleteButton;
+    font-weight: bold;
     /* position: relative; */
     width: 25px;
     /* left: 14em;
@@ -168,6 +171,22 @@ a:hover{
     background: transparent;
     border-style: none;
 }
+#deleteButton:hover{
+    /* transform: translateY(2px); */
+    font-weight: bold;
+    font-size: 95%;
+}
+
+#readButton{
+    grid-area: readButton;
+    background: transparent;
+    border-style: none;
+}
+
+#readButtonText {
+    grid-area: readButton;
+}
+    
 #submit{
     background: rgba(189, 238, 179, 0.87);
     border-radius: 10%;
