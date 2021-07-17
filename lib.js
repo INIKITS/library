@@ -8,7 +8,6 @@ const cancelForm = document.getElementById('cancel');
 const formContainer = document.getElementById('formContainer');
 
 
-
 function Book(title, author, pages){
     this.title = title;
     this.author = author;
@@ -55,6 +54,18 @@ function checkForDup(libIndex){
     }
 }
 
+function checkIfRead(read, card){
+
+    if (read){
+        card.innerHTML = 'Read';
+    }
+    else{
+        card.innerHTML = 'Not read';
+    }
+}
+
+
+
 function addNewCard(lib){
     console.log(typeof(lib));
     Object.values(lib).forEach((key, index) => {
@@ -66,15 +77,19 @@ function addNewCard(lib){
         // create card info and append to container //
         const deleteButton = document.createElement('BUTTON')
         const readButton = document.createElement('INPUT');
-        const readButtonText = document.createElement('p');
-        const cardTitle = document.createElement('p');
+        const readButtonText = document.createElement('label');
+        const cardTitle = document.createElement('H1');
         const cardText = document.createElement('p');
 
+        
         readButtonText.id = 'readButtonText';
-        readButtonText.innerHTML = 'Read or not read!';
-        readButton.setAttribute('type', 'checkbox');
+        // readButtonText.innerHTML = 'Read or not read!';
+        // readButtonText.setAttribute('for', 'cb5');
+        // readButtonText.setAttribute('data-tg-off', 'Nope');
+        // readButtonText.setAttribute('data-tg-on', 'Yeah!');
+        // readButtonText.className = 'tgl-btn';
+        readButton.setAttribute('type', 'BUTTON');
         readButton.id = 'readButton';
-        readButton.innerHTML = this.read;
         deleteButton.id='deleteButton';
         deleteButton.innerHTML = 'X';
         cardTitle.innerHTML = key.title;
@@ -83,15 +98,16 @@ function addNewCard(lib){
         cardText.id = 'cardText';
         newBookCard.className = 'cardDisplay';
         newBookCard.id = 'card';
-
+        
         newBookCard.appendChild(deleteButton);
         newBookCard.appendChild(cardTitle);
         newBookCard.appendChild(cardText);
         newBookCard.appendChild(readButton);
         newBookCard.appendChild(readButtonText);
         container.appendChild(newBookCard);
-
-
+        
+        readButton.innerHTML = checkIfRead(key.read, readButtonText);
+        
         })
 
     }
@@ -111,6 +127,19 @@ container.addEventListener('click', function(e){
         var cardToDelete = e.target.parentNode.getAttribute('data-cardNum');
 
         myLibrary.splice(cardToDelete, 1);
+    }
+})
+
+container.addEventListener('click', function(e){
+    if (e.target && e.target.id == 'readButtonText'){
+        console.log('READBUTTON!');
+        var bookID = e.target.parentNode.getAttribute('data-cardNum');
+        console.log(myLibrary[0].read);
+        console.log(bookID, e.target);
+
+        myLibrary[bookID].read = myLibrary[bookID].read ? false: true;
+
+        checkIfRead(myLibrary[bookID].read, e.target);
     }
 })
 

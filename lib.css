@@ -180,11 +180,23 @@ a:hover{
 #readButton{
     grid-area: readButton;
     background: transparent;
-    border-style: none;
+    border-style: solid;
+    border-color: #639292;
 }
 
 #readButtonText {
     grid-area: readButton;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+#readButtonText:hover{
+    transform: translateY(1px);
+    box-shadow: -11px -1px 11px -1px #5c7577;
+    cursor: pointer;
 }
     
 #submit{
