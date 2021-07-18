@@ -24,7 +24,6 @@ function addBookToLibrary(){
     var title = document.getElementById('title').value;
     var author = document.getElementById('author').value;
     var pages = document.getElementById('pages').value;
-    // var readStatus = document.getElementById('readButton').value;
         
     newBook = new Book(title, author, pages);
      myLibrary.push(newBook);
@@ -55,16 +54,14 @@ function checkForDup(libIndex){
 }
 
 function checkIfRead(read, card){
-
     if (read){
         card.innerHTML = 'Read';
     }
+
     else{
         card.innerHTML = 'Not read';
     }
 }
-
-
 
 function addNewCard(lib){
     console.log(typeof(lib));
@@ -107,9 +104,7 @@ function addNewCard(lib){
         container.appendChild(newBookCard);
         
         readButton.innerHTML = checkIfRead(key.read, readButtonText);
-        
         })
-
     }
 
 bookForm.onsubmit = function(e){
